@@ -7,7 +7,9 @@ class PostsController < ApplicationController
     Post.create(content: params[:content])
     redirect_to action: :index
   end
-
+  def create 
+    post = Post.create(content: params[:content],checked: false)
+    render json:{ post: post }
   def checked
     binding.pry
     post = Post.find(params[:id])
